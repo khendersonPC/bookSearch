@@ -8,7 +8,7 @@ export default {
   },
   // Gets the book with the given id
   getBook: function(searchTerm) {
-    console.log("getbook called");
+    
     return axios.get("https://www.googleapis.com/books/v1/volumes").query({q:searchTerm});
 
   },
@@ -18,6 +18,7 @@ export default {
   },
   // Saves a book to the database
   saveBook: function(bookData) {
+    console.log("save book called" + bookData);
     return axios.post("/api/books", bookData);
   }
 };

@@ -10,9 +10,10 @@ import axios from 'axios'
 
 function Books() {
   // Setting our component's initial state
-  const [books, setBooks] = useState([])
-  const [searchField, setSearchField] = useState("")
-  const [formObject, setFormObject] = useState({})
+  const [books, setBooks] = useState([]);
+  const [volID, setVolID] = useState("");
+  const [searchField, setSearchField] = useState("");
+  const [formObject, setFormObject] = useState({});
 
 
   // Load all books and store them with setBooks
@@ -21,14 +22,11 @@ function Books() {
   }, [])
 
   function searchBook(event){
-    console.log("searchBook called");
-    console.log(formObject.title);
    // event.preventDefault(event);
     axios.request({
       method: 'get',
       url:"https://www.googleapis.com/books/v1/volumes?q="+ formObject.title})
     .then((res)=>{
-      console.log(res);
       setBooks([...res.data.items]);
     })
   }
@@ -42,6 +40,25 @@ function Books() {
       .catch(err => console.log(err));
   };
 
+  function handleSave(event){
+
+    axios.request({
+      method: 'get',
+      url:"https://www.googleapis.com/books/v1/volumes/"+ volID})
+    .then((res)=>{
+      axios.request({
+        method: 'post',
+        url:("/api/books", res)
+      });
+    })
+   
+      // API.saveBook({
+      // title: formObject.title,
+      // author: formObject.author,
+      // description: formObject.description
+      // })
+
+  }
   // Deletes a book from the database with a given id, then reloads books from the db
   function deleteBook(id) {
     API.deleteBook(id)
@@ -52,10 +69,7 @@ function Books() {
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
-    console.log(name + " " + value);
-    setFormObject({...formObject, [name]: value})
-    
-    
+    setFormObject({...formObject, [name]: value}) 
   };
 
   // When the form is submitted, use the API.saveBook method to save the book data
@@ -65,9 +79,7 @@ function Books() {
   
     
       if(formObject.title){
-        console.log("form title " + formObject.title);
         setSearchField(formObject.title)
-        console.log(searchField);
         searchBook();
       }
       else{
@@ -87,8 +99,6 @@ function Books() {
 
     return (
       <Container fluid>
-        
-          
             <Jumbotron>
               <h1>Looking for a Book?</h1>
             </Jumbotron>
@@ -111,7 +121,7 @@ function Books() {
               <h1>Suggestions</h1>
        
             
-            <BookList books = {books}/>
+            <BookList books = {books} onClick = {handleSave}/>
               
             </div>
          

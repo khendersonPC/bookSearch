@@ -15,7 +15,7 @@ const BookCard = (props) => {
                 </div>
                 <div class="card-footer">
                 <a href={props.link} className="btn btn-primary" target="_blank" >View</a>     
-                    <a href="#" className="btn btn-danger" style={{marginLeft: "10px"}}>Save</a>
+                <button onClick={()=>setVolID({props.volID})} className="btn btn-danger" style={{marginLeft: "10px"}}>Save</button>
                 </div>
         </div>
             )
