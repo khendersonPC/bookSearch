@@ -20,7 +20,7 @@ export const BookList = (props) => {
                                 description={book.searchInfo ?.textSnippet}
                                 link={book.volumeInfo.infoLink}
                                 volID={book.id}
-                                onClick={props.onClick}
+                                //onClick={props.onClick}
                             />
                         </div>
                     }

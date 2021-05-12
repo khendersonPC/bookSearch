@@ -11,7 +11,6 @@ import axios from 'axios'
 function Books() {
   // Setting our component's initial state
   const [books, setBooks] = useState([]);
-  const [volID, setVolID] = useState("");
   const [searchField, setSearchField] = useState("");
   const [formObject, setFormObject] = useState({});
 
@@ -40,17 +39,7 @@ function Books() {
       .catch(err => console.log(err));
   };
 
-  function handleSave(event){
-
-    axios.request({
-      method: 'get',
-      url:"https://www.googleapis.com/books/v1/volumes/"+ volID})
-    .then((res)=>{
-      axios.request({
-        method: 'post',
-        url:("/api/books", res)
-      });
-    })
+  
    
       // API.saveBook({
       // title: formObject.title,
@@ -58,13 +47,13 @@ function Books() {
       // description: formObject.description
       // })
 
-  }
+  
   // Deletes a book from the database with a given id, then reloads books from the db
   function deleteBook(id) {
     API.deleteBook(id)
       .then(res => loadBooks())
       .catch(err => console.log(err));
-  }
+  };
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -75,9 +64,7 @@ function Books() {
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
-    event.preventDefault();
-  
-    
+    event.preventDefault(); 
       if(formObject.title){
         setSearchField(formObject.title)
         searchBook();
@@ -86,15 +73,6 @@ function Books() {
         setSearchField(formObject.author);
         searchBook();
       }
-      // API.saveBook({
-      //   title: formObject.title,
-      //   author: formObject.author,
-      //   description: formObject.description
-      // })
-      //   .then(res=>searchBook())
-      //   .then(res => loadBooks())
-      //   .catch(err => console.log(err));
-    
   };
 
     return (
@@ -121,7 +99,7 @@ function Books() {
               <h1>Suggestions</h1>
        
             
-            <BookList books = {books} onClick = {handleSave}/>
+            <BookList books = {books}/>
               
             </div>
          

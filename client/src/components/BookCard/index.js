@@ -1,8 +1,22 @@
 import React from "react";
+import axios from 'axios';
 //import "./style.css";
 
 
 const BookCard = (props) => {
+
+    function handleSave(){
+        console.log("handle save");
+        console.log(props.volID);
+        axios.request({
+          method: 'get',
+          url:"https://www.googleapis.com/books/v1/volumes/"+ props.volID})
+        .then((res)=>{
+            // console.log(res)})
+           axios.post("/api/books", res)
+           });
+        
+    }
     return (
 
         <div className="card" style={{width: "18rem"}}>
@@ -15,7 +29,7 @@ const BookCard = (props) => {
                 </div>
                 <div class="card-footer">
                 <a href={props.link} className="btn btn-primary" target="_blank" >View</a>     
-                <button onClick={()=>setVolID({props.volID})} className="btn btn-danger" style={{marginLeft: "10px"}}>Save</button>
+                <button onClick={handleSave} className="btn btn-danger" style={{marginLeft: "10px"}}>Save</button>
                 </div>
         </div>
             )
