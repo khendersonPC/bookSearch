@@ -87,8 +87,8 @@ function Books() {
 
     return (
       <Container fluid>
-        <Row>
-          <Col size="md-6">
+        
+          
             <Jumbotron>
               <h1>Looking for a Book?</h1>
             </Jumbotron>
@@ -96,31 +96,26 @@ function Books() {
               <Input
                 onChange={handleInputChange}
                 name="title"
-                placeholder="Title"
-              />
-              <Input
-                onChange={handleInputChange}
-                name="author"
-                placeholder="Author"
+                placeholder="key words or author"
               />
               <FormBtn
                 //disabled={!(formObject.author && formObject.title)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Search
               </FormBtn>
             </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
+        
+            <div style={{marginTop:30}}>
+           
+              <h1>Suggestions</h1>
+       
             
             <BookList books = {books}/>
               
-            )}
-          </Col>
-        </Row>
+            </div>
+         
+        
       </Container>
     );
   }
