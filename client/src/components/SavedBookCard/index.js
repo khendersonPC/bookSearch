@@ -4,21 +4,17 @@ import API from "../../utils/API"
 //import "./style.css";
 
 
-const BookCard = (props) => {
+const SavedBookCard = (props) => {
 
-    function handleSave(){
-        console.log("handle save");
+    function handleDelete(){
+        console.log("handle delete");
         console.log(props.volID);
-        axios.request({
-          method: 'GET',
-          url:"https://www.googleapis.com/books/v1/volumes/"+ props.volID})
+        axios.delete("/api/books/" + props.volID)
         .then((res)=>{
             console.log(res);
-           API.saveBook(res)
+           // API.deleteBook(res)
         })   
     }
-
-    
 
     return (
 
@@ -31,12 +27,12 @@ const BookCard = (props) => {
                     
                 </div>
                 <div class="card-footer">
-                <a href={props.link} className="btn btn-primary btn-sm" target="_blank" >View</a>     
-                <button onClick={handleSave} className="btn btn-danger btn-sm" style={{marginLeft: "10px"}}>Save</button>
+                <a href={props.link} className="btn btn-primary" target="_blank" >View</a>     
+                <button onClick={handleDelete} className="btn btn-info" style={{marginLeft: "10px"}}>Delete</button>
                 </div>
         </div>
             )
         }
         
         
-export default BookCard;
+export default SavedBookCard;

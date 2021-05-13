@@ -1,9 +1,9 @@
 import React from "react";
 //import "./style.css";
-import BookCard from "../BookCard"
+import SavedBookCard from "../SavedBookCard"
 import Col from "../Grid"
 
-export const BookList = (props) => {
+export const SavedBookList = (props) => {
 
     return (
         <div className="list">
@@ -12,14 +12,14 @@ export const BookList = (props) => {
                     props.books.map((book, i) => {
 
                         return <div className="col-xs-3" >
-                            <BookCard
+                            <SavedBookCard
                                 key={i}
-                                image={book.volumeInfo.imageLinks?.smallThumbnail}
-                                title={book.volumeInfo.title}
-                                authors={book.volumeInfo.authors}
-                                description={book.searchInfo?.textSnippet}
-                                link={book.volumeInfo.infoLink}
-                                volID={book.id}
+                                image={book.image}
+                                title={book.title}
+                                authors={book.authors}
+                               description={book.searchInfo?.textSnippet}
+                                link={book.link}
+                                volID={book._id}
                                 //onClick={props.onClick}
                             />
                         </div>
@@ -30,4 +30,4 @@ export const BookList = (props) => {
         </div>
     )
 }
-export default BookList;
+export default SavedBookList;
