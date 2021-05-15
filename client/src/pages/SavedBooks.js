@@ -5,7 +5,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { SavedBookList} from "../components/SavedBookList";
-import { Input, TextArea, FormBtn } from "../components/Form";
+
 import axios from 'axios'
 
 function SavedBooks() {
@@ -22,7 +22,10 @@ function SavedBooks() {
   function loadBooks() {
     API.getBooks()
       .then(res => 
-        setBooks(res.data.items)
+        console.log(res.data.items)
+        .then(
+          setBooks(res.data.items)
+        )
       )
       .catch(err => console.log(err));
   };
