@@ -22,10 +22,11 @@ function SavedBooks() {
   function loadBooks() {
     API.getBooks()
       .then(res => 
-          setBooks(res.data.items).then(        console.log("books-savedbooks"+books))
+        console.log("books to set- savedbooks"+res)
+        //  setBooks(res.data.items)
+         
         
       )
-      .catch(err => console.log(err));
   };
 
   
