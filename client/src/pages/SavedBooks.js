@@ -22,14 +22,11 @@ function SavedBooks() {
   function loadBooks() {
     API.getBooks()
       .then(res => 
-        console.log("books to set- savedbooks"+res.data)
-        //  setBooks(res.data.items)
-         
-        
+        setBooks(res.data.items) 
       )
   };
 
-  
+
   //Deletes a book from the database with a given id, then reloads books from the db
   function deleteBook(id) {
     API.deleteBook(id)

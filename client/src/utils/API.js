@@ -4,7 +4,7 @@ export default {
   // Gets all books
   getBooks: function() {
     console.log("getbooks called");
-    return axios.get("/api/books");
+    return axios.get("/api/books/");
   },
   // Gets the book with the given id
 
