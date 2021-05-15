@@ -23,12 +23,12 @@ export default {
       //   "link "+ bookData.data.volumeInfo.infoLink + 
       //   "volId" + bookData.data.id)
       return( axios.post("api/books/", {
-        title: bookData.data.title,
-        image: bookData.data.image,
-        authors: bookData.data.authors,
-        description: bookData.data.description,
-        link: bookData.data.link,
-        volId: bookData.data.ID
+        title: bookData.title,
+        image: bookData.image,
+        authors: bookData.authors,
+        description: bookData.description,
+        link: bookData.link,
+        volId: bookData.volID
       }))
     }
 }
