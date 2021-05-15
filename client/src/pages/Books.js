@@ -26,7 +26,7 @@ function Books() {
       method: 'get',
       url:"https://www.googleapis.com/books/v1/volumes?q="+ formObject.title})
     .then((res)=>{
-      setBooks([...res.data.items]);
+      setBooks( res.data.items);
     })
   }
  

@@ -6,16 +6,30 @@ import API from "../../utils/API"
 
 const BookCard = (props) => {
 
-    function handleSave(){
+  const handleSave  =(book)=>{
         console.log("handle save");
-        console.log(props.volID);
-        axios.request({
-          method: 'GET',
-          url:"https://www.googleapis.com/books/v1/volumes/"+ props.volID})
-        .then((res)=>{
-            console.log(res);
-           API.saveBook(res)
-        })   
+        // console.log(props.volID);
+        // axios.request({
+        //   method: 'GET',
+        //   url:"https://www.googleapis.com/books/v1/volumes/"+ props.volID})
+        // .then((res)=>{
+        //     console.log(res);
+        // image={book.volumeInfo.imageLinks ?  book.volumeInfo.imageLinks.smallThumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUzReEQnYR7oHkPM93mPL9bPUIj5uAnnqoK08D3zZmwI4rAaVscFAndpeYpOo-qFm3y2kCKCHE02tH1KA-:https://cdn.iconscout.com/icon/premium/png-512-thumb/no-image-1753539-1493784.png&usqp=CAU"}
+        // title={book.volumeInfo.title}
+        // authors={book.volumeInfo.authors}
+        // description={book.searchInfo? book.searchInfo.textSnippet: "No description available"}
+        // link={book.volumeInfo.infoLink}
+        // volID={book.id}
+        const newBook = {
+            title: book.title,
+            authors: book.authors,
+            description: book.description,
+            image: book.image,
+            link: book.link,
+            volID: book.volID
+        }
+           API.saveBook(newBook)
+        // })   
     }
 
     
@@ -32,7 +46,7 @@ const BookCard = (props) => {
                 </div>
                 <div class="card-footer">
                 <a href={props.link} className="btn btn-primary btn-sm" target="_blank" >View</a>     
-                <button onClick={handleSave} className="btn btn-danger btn-sm" style={{marginLeft: "10px"}}>Save</button>
+                <button onClick={()=>handleSave(props)} className="btn btn-danger btn-sm" style={{marginLeft: "10px"}}>Save</button>
                 </div>
         </div>
             )
