@@ -8,23 +8,24 @@ export const BookList = (props) => {
     return (
         <div className="list">
             <div class="card-deck">
-                {
+                {  
+                    props.books.length>0?
                     props.books.map((book, i) => {
 
                         return <div className="col-xs-3" >
                             <BookCard
                                 key={i}
-                                image={book.volumeInfo.imageLinks?.smallThumbnail}
+                                image={book.volumeInfo.imageLinks ?  book.volumeInfo.imageLinks.smallThumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUzReEQnYR7oHkPM93mPL9bPUIj5uAnnqoK08D3zZmwI4rAaVscFAndpeYpOo-qFm3y2kCKCHE02tH1KA-:https://cdn.iconscout.com/icon/premium/png-512-thumb/no-image-1753539-1493784.png&usqp=CAU"}
                                 title={book.volumeInfo.title}
                                 authors={book.volumeInfo.authors}
-                                description={book.searchInfo?.textSnippet}
+                                description={book.searchInfo? book.searchInfo.textSnippet: "No description available"}
                                 link={book.volumeInfo.infoLink}
                                 volID={book.id}
                                 //onClick={props.onClick}
                             />
                         </div>
                     }
-                    )
+                ):"No Search Found"
                 }
             </div>
         </div>
