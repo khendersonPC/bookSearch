@@ -11,14 +11,13 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 
 // Add routes, both API and view
-app.use(routes);
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  app.get("/*", function(req, res){
-    res.sendFile(path.join(__dirname, "./client/build/index.html"))
-  })
 }
+
+app.use(routes);
 // Connect to the Mongo DB
 
 mongoose.connect(
@@ -31,6 +30,9 @@ mongoose.connect(
   }
 );
 
+app.get("*", function(req, res){
+  res.sendFile(path.join(__dirname, "./client/build/index.html"))
+})
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
