@@ -21,6 +21,7 @@ export const SavedBookList = (props) => {
                                description={book.searchInfo ? book.searchInfo.textSnippet : "No description available"}
                                 link={book.link}
                                 volID={book._id}
+                                loadBooks={props.loadBooks}
                                 //onClick={props.onClick}
                             />
                         </div>

@@ -12,7 +12,7 @@ const SavedBookCard = (props) => {
         axios.delete("/api/books/" + props.volID)
         .then((res)=>{
             console.log(res);
-           // API.deleteBook(res)
+            props.loadBooks();
         })   
     }
 

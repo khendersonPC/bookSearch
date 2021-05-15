@@ -21,8 +21,11 @@ function SavedBooks() {
   //Loads all books and sets them to books
   function loadBooks() {
     API.getBooks()
-      .then(res => 
-        setBooks(res.data.items) 
+      .then(res => {
+        setBooks(res.data) 
+        console.log(res);
+      }
+        
       )
   };
 
@@ -54,7 +57,7 @@ function SavedBooks() {
            <h1 style={{textAlign: "right", marginRight: "30"}}><Link to="/">Search</Link> </h1>
             </div>
         <div>
-            <SavedBookList books = {books}/>
+            <SavedBookList books = {books} loadBooks={loadBooks}/>
               
             </div>
          
