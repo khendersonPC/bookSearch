@@ -16,7 +16,7 @@ export default {
 
   // Saves a book to the database
   saveBook: function(bookData) {
-    console.log("book data"+bookData);
+    console.log("book data"+bookData.title);
       // "title " + bookData.data.volumeInfo.title+
       // "authors "+ bookData.data.volumeInfo.authors+
       //   "description " + bookData.data.searchInfo?.textSnippet+
