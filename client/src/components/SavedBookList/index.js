@@ -9,6 +9,7 @@ export const SavedBookList = (props) => {
         <div className="list">
             <div class="card-deck">
                 {
+                     props.books.length>0?
                     props.books.map((book, i) => {
 
                         return <div className="col-xs-3" >
@@ -17,14 +18,14 @@ export const SavedBookList = (props) => {
                                 image={book.image}
                                 title={book.title}
                                 authors={book.authors}
-                               description={book.searchInfo?.textSnippet}
+                               description={book.searchInfo ? book.searchInfo.textSnippet : "No description available"}
                                 link={book.link}
                                 volID={book._id}
                                 //onClick={props.onClick}
                             />
                         </div>
                     }
-                    )
+                    ):"No saved books"
                 }
             </div>
         </div>
