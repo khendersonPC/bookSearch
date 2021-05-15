@@ -9,7 +9,7 @@ export const BookList = (props) => {
         <div className="list">
             <div class="card-deck">
                 {  
-                    props.books.length>0?
+                    props.books?
                     props.books.map((book, i) => {
 
                         return <div className="col-xs-3" >
