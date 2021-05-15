@@ -16,19 +16,19 @@ export default {
 
   // Saves a book to the database
   saveBook: function(bookData) {
-    console.log(bookData);
+    console.log("book data"+bookData);
       // "title " + bookData.data.volumeInfo.title+
       // "authors "+ bookData.data.volumeInfo.authors+
       //   "description " + bookData.data.searchInfo?.textSnippet+
       //   "link "+ bookData.data.volumeInfo.infoLink + 
       //   "volId" + bookData.data.id)
       return( axios.post("api/books/", {
-        title: bookData.data.volumeInfo.title,
-        image: bookData.data.volumeInfo.imageLinks?.smallThumbnail,
-        authors: bookData.data.volumeInfo.authors,
-        description: bookData.data.searchInfo?.textSnippet,
-        link: bookData.data.volumeInfo.infoLink,
-        volId: bookData.data.id
+        title: bookData.data.title,
+        image: bookData.data.image,
+        authors: bookData.data.authors,
+        description: bookData.data.description,
+        link: bookData.data.link,
+        volId: bookData.data.ID
       }))
     }
 }
